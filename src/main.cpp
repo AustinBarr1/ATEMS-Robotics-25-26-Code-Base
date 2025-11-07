@@ -1,9 +1,6 @@
 #include "main.h"
 
 
-// GO TO BOTTOM OF DRIVE.HPP IF YOU FORGOT
-
-
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -15,17 +12,26 @@ ez::Drive chassis(
     {-2, -4},     // Left Chassis Ports (negative port will reverse it!)
     {3, 6},  // Right Chassis Ports (negative port will reverse it!)
 
-    1,      // IMU Port
+    1,      // Inertial sensor Port
     4.125,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
-    142.86);   // Wheel RPM = cartridge * (motor gear / wheel gear)
+    142.86);   // Wheel RPM = motor color RPM(google this) * (motor gear / wheel gear(this is the gear ratio))
 
-// Uncomment the trackers you're using here!
+////////////////////////////////////////////////////////////////////////////
+// Tracking wheel section
+
+// Uncomment the trackers you're using here! (these are for tracking wheels, they help you're robot know where they are.
+// For more info on why we need them watch this -> https://www.youtube.com/watch?v=GEZBYHVHmFQ
+
 // - `8` and `9` are smart ports (making these negative will reverse the sensor)
 //  - you should get positive values on the encoders going FORWARD and RIGHT
 // - `2.75` is the wheel diameter
 // - `4.0` is the distance from the center of the wheel to the center of the robot
+
 // ez::tracking_wheel horiz_tracker(8, 2.75, 4.0);  // This tracking wheel is perpendicular to the drive wheels
 // ez::tracking_wheel vert_tracker(9, 2.75, 4.0);   // This tracking wheel is parallel to the drive wheels
+
+////////////////////////////////////////////////////////////////////////////
+
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -276,4 +282,5 @@ void opcontrol() {
     // . . .
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
+
   }
